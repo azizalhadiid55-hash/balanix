@@ -1,0 +1,99 @@
+.footer-collapse {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.footer-collapse-perusahaan {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.footer-collapse-title {
+    letter-spacing: 0.5px;
+}
+
+.icon-arrow {
+    font-size: 16px;
+    color: #8b94a8;
+    transition: all 0.3s ease;
+    margin-left: 15px;
+}
+
+.footer-collapse-perusahaan[aria-expanded="true"] {
+    background: #fff !important;
+}
+
+.footer-collapse-perusahaan[aria-expanded="true"] .icon-arrow {
+    transform: rotate(180deg);
+    color: #6366f1;
+}
+
+.background-collapse {
+    border-top: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+.footer-menu-collapse {
+    cursor: pointer;
+    padding: 10px 30px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-menu-collapse a {
+    color: #5d6269; /* warna default, bukan biru */
+    text-decoration: none; /* hilangkan underline */
+    font-weight: 400;
+    transition: color 0.2s;
+    font-size: medium;
+}
+
+.footer-menu-collapse a:hover {
+    color: #6366f1; /* warna biru saat hover */
+    text-decoration: none; /* tetap tanpa underline saat hover */
+}
+
+.dsescription-newsletter {
+    font-size: 14px;
+    text-align: center;
+}
+
+.newsletter-btn-mobile {
+    background: linear-gradient(135deg, #4f7cff, #6366f1);
+    border: none;
+    border-radius: 0 12px 12px 0;
+    color: white;
+    padding: 6px 20px;
+    transition: all 0.3s ease;
+}
+
+.newsletter-btn-mobile:hover {
+    background: linear-gradient(45deg, #5855f4, #7c3aed);
+    transform: translateX(2px);
+}
+
+.newsletter-input-mobile {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid #263238;
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    color: #263238;
+    padding: 6px 15px;
+}
+
+.newsletter-input-mobile::placeholder {
+    color: #263238;
+    font-size: 14px;
+}
