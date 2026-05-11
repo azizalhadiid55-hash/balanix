@@ -40,7 +40,7 @@ class DashboardController extends Controller
 
         // ====== Chart Kas & Bank ======
         $kasBank = Transaksi::select(
-            DB::raw("MONTH(tanggal_transaksi) as bulan"),
+            DB::raw("EXTRACT(MONTH FROM tanggal_transaksi) as bulan"),
             DB::raw("SUM(CASE WHEN jenis_transaksi='pemasukan' THEN total ELSE 0 END) as pemasukan"),
             DB::raw("SUM(CASE WHEN jenis_transaksi='pengeluaran' THEN total ELSE 0 END) as pengeluaran")
         )
@@ -61,7 +61,7 @@ class DashboardController extends Controller
 
         // ====== Chart Hutang Piutang ======
         $hutangPiutang = HutangPiutang::select(
-            DB::raw("MONTH(created_at) as bulan"),
+            DB::raw("EXTRACT(MONTH FROM created_at) as bulan"),
             DB::raw("SUM(CASE WHEN jenis_transaksi = 'hutang' THEN total ELSE 0 END) as hutang"),
             DB::raw("SUM(CASE WHEN jenis_transaksi = 'piutang' THEN total ELSE 0 END) as piutang")
         )
@@ -134,6 +134,6 @@ class DashboardController extends Controller
         ]);
 
         // Unduh file dengan nama dinamis
-        return $pdf->download('Laporan-'.now()->format('Ymd').'.pdf');
+        return $pdf->download('Laporan-' . now()->format('Ymd') . '.pdf');
     }
 }
