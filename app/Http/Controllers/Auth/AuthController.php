@@ -38,13 +38,21 @@ class AuthController extends Controller
     // Untuk Logout
     public function logout(Request $request)
     {
-        Auth::user()->remember_token = null;
-        Auth::user()->google_token = null;
-        Auth::user()->google_refresh_token = null;
-        Auth::user()->save();
+        /** @var \App\Models\User $user */
+        $user = Auth::user();
+
+        if ($user) {
+            $user->remember_token = null;
+            $user->google_token = null;
+            $user->google_refresh_token = null;
+            $user->save();
+        }
+
         Auth::logout();
+
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+
         return redirect('/login');
     }
 
@@ -147,13 +155,19 @@ class AuthController extends Controller
 
     public function redirectToGoogle()
     {
-        return Socialite::driver('google')->redirect();
+        /** @var \Laravel\Socialite\Two\GoogleProvider $driver */
+        $driver = Socialite::driver('google');
+
+        return $driver->stateless()->redirect();
     }
 
     public function handleGoogleCallback(Request $request)
     {
         try {
-            $googleUser = Socialite::driver('google')->user();
+            /** @var \Laravel\Socialite\Two\GoogleProvider $driver */
+            $driver = Socialite::driver('google');
+
+            $googleUser = $driver->stateless()->user();
 
             $user = User::updateOrCreate([
                 'email' => $googleUser->email,
