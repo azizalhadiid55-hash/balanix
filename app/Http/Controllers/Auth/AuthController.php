@@ -198,8 +198,7 @@ class AuthController extends Controller
 
             return redirect('/login')->withErrors(['msg' => 'Login gagal, silakan coba lagi.']);
         } catch (\Exception $e) {
-            // Menangkap dan menampilkan pesan error asli dari sistem ke halaman login
-            return redirect('/login')->withErrors(['msg' => 'Gagal Login: ' . $e->getMessage()]);
+            return redirect('/login')->withErrors(['msg' => 'Login dengan Google telah dibatalkan']);
         }
     }
 }
